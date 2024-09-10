@@ -1,5 +1,6 @@
 import { Carousel, Embla } from "@mantine/carousel";
 import {
+  Anchor,
   Box,
   Card,
   Center,
@@ -21,6 +22,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import speakerPlaceholder from "/speaker-60x60.png";
 import { useNavigate, useParams } from "react-router-dom";
+import { MainCard } from "components/MainCard";
 
 // an array of speaker objects, with each object having a date value of the second tuesday of each month, starting with September 2023
 const speakers = [
@@ -379,38 +381,22 @@ export function Speaker() {
 export function SpeakerCard() {
   const speaker = speakers[defaultSpeakerId];
 
-  return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Card.Section>
-        <Center fz="h2">Upcoming Speaker</Center>
-        <Center>
-          <Image src="https://via.placeholder.com/120?text=John" />
-        </Center>
-        <Center>
-          <Text size="xs">{speaker.name}, {speaker.affiliation}</Text>
-        </Center>
-      </Card.Section>
-      <Text flex={1}>
-        Join us{" "}
-        <b>
-          {speaker.date.toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-          })}
-        </b>{" "}
-        for a talk on {speaker.topic}. {speaker.blurb}.
-      </Text>
-      <Card.Section>
-        <Flex>
-          <Text fz={"sm"} ml={10}>
-            Archive
-          </Text>
-          <Box flex={1} />
-          <Text fz={"sm"} mr={10}>
-            More...
-          </Text>
-        </Flex>
-      </Card.Section>
-    </Card>
-  );
-}
+  return <MainCard
+    title="Upcoming Speaker"
+    titleLink="/speaker"
+    image="https://placehold.co/120?text=John"
+    imageCaption={`${speaker.name}, ${speaker.affiliation}`}
+    body={<Text>Join us{" "}
+      <b>
+        {speaker.date.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+        })}
+      </b>{" "}
+      for a talk on {speaker.topic}. {speaker.blurb}.
+    </Text>}
+    footerLeft="Archive"
+    footerLeftLink="/speaker/archive"
+    footerRight="More..."
+    footerRightLink="/speaker"
+  />;}

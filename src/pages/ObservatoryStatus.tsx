@@ -5,6 +5,7 @@ import {
   Box,
   Center,
   Divider,
+  Flex,
   Group,
   Image,
   Stack,
@@ -15,6 +16,7 @@ import { ImageModal } from "../components/ImageModal";
 import directions from "/observatory-directions.png";
 import { Link, useLocation } from "react-router-dom";
 import { images } from "../assets/images";
+import { IconTelescope } from "@tabler/icons-react";
 
 const NEXT_FRIDAY = getNextFriday();
 
@@ -42,6 +44,9 @@ export function ObservatoryStatusMini() {
   return (
     <Stack gap={0} bg={color} bd={`4px solid ${color}`}>
       <Center>
+        <Flex mr="xs">
+          <IconTelescope color="white" />
+        </Flex>
         <Anchor component={Link} c="white" to={isMembers ? "/members/observatory" : "/observatory"}>
           Observatory Status
         </Anchor>
@@ -113,7 +118,7 @@ export function ObservatoryStatus() {
       <Group mt="lg">
         <Stack flex={1} mb="lg">
           <Center>
-            <Text fz="h2">Directions to the Park Entrace</Text>
+            <Text fz="h2">Get Directions to the Park Entrace</Text>
           </Center>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d3662.263869676087!2d-74.8538463!3d40.3153916!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d40.3159899!2d-74.85224889999999!5e1!3m2!1sen!2sus!4v1718232897728!5m2!1sen!2sus"
@@ -128,7 +133,7 @@ export function ObservatoryStatus() {
         <Divider orientation="vertical" />
         <Stack flex={1} mb="lg">
           <Center>
-            <Text fz="h2">Directions to the Observatory</Text>
+            <Text fz="h2">Directions from Park Entrance to the Observatory</Text>
           </Center>
           <Center>
             <ImageModal

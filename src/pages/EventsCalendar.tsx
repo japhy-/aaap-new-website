@@ -164,6 +164,70 @@ const events: CalendarEvent[] = [
     tags: ["observatory", "recurring", "weekly"],
     link: "/observatory",
   },
+  {
+    date: "2024-09-06",
+    time: ["sunset", "11:00 PM"],
+    title: "Observatory Public Night",
+    location: "Simpson Observatory",
+    tags: ["observatory", "recurring", "weekly"],
+    link: "/observatory",
+  },
+  {
+    date: "2024-09-13",
+    time: ["sunset", "11:00 PM"],
+    title: "Observatory Public Night",
+    location: "Simpson Observatory",
+    tags: ["observatory", "recurring", "weekly"],
+    link: "/observatory",
+  },
+  {
+    date: "2024-09-20",
+    time: ["sunset", "11:00 PM"],
+    title: "Observatory Public Night",
+    location: "Simpson Observatory",
+    tags: ["observatory", "recurring", "weekly"],
+    link: "/observatory",
+  },
+  {
+    date: "2024-09-27",
+    time: ["sunset", "11:00 PM"],
+    title: "Observatory Public Night",
+    location: "Simpson Observatory",
+    tags: ["observatory", "recurring", "weekly"],
+    link: "/observatory",
+  },
+  {
+    date: "2024-10-04",
+    time: ["sunset", "11:00 PM"],
+    title: "Observatory Public Night",
+    location: "Simpson Observatory",
+    tags: ["observatory", "recurring", "weekly"],
+    link: "/observatory",
+  },
+  {
+    date: "2024-10-11",
+    time: ["sunset", "11:00 PM"],
+    title: "Observatory Public Night",
+    location: "Simpson Observatory",
+    tags: ["observatory", "recurring", "weekly"],
+    link: "/observatory",
+  },
+  {
+    date: "2024-10-18",
+    time: ["sunset", "11:00 PM"],
+    title: "Observatory Public Night",
+    location: "Simpson Observatory",
+    tags: ["observatory", "recurring", "weekly"],
+    link: "/observatory",
+  },
+  {
+    date: "2024-10-25",
+    time: ["sunset", "11:00 PM"],
+    title: "Observatory Public Night",
+    location: "Simpson Observatory",
+    tags: ["observatory", "recurring", "weekly"],
+    link: "/observatory",
+  },
 ];
 
 function displayEvents(date: Date) {
@@ -198,15 +262,14 @@ const today = new Date(Date.now() - tzOffset * 60000)
 const localToday = new Date().getDate();
 
 function displayDay(date: Date) {
-  const day = date.getDate();
   return (
     <Indicator
       size={6}
       color="yellow"
       offset={-2}
-      disabled={day !== localToday}
+      disabled={date.toISOString().slice(0,10) !== today}
     >
-      <div>{day}</div>
+      <div>{date.getDate()}</div>
     </Indicator>
   );
 }
@@ -394,7 +457,7 @@ export function EventsCalendar() {
             required
             placeholder="name@domain.com"
           />
-          <Textarea label="Additional Notes" />
+          <Textarea label="Expected Agenda" />
           <Flex direction="row-reverse" justify="space-between">
             <Button type="submit" onClick={closeRequestEventModal}>
               Submit Request
@@ -444,7 +507,7 @@ export function EventsCalendar() {
           />
           <NumberInput label="Members Needed" />
           <TextInput label="Equipment Needed" type="string" />
-          <Textarea label="Additional Notes" />
+          <Textarea label="Expected Agenda" />
           <Flex direction="row-reverse" justify="space-between">
             <Button type="submit" onClick={closeCreateEventModal}>
               Create Event
